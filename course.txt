@@ -1,5 +1,4 @@
-# Typed tagless-final interpretations: Lecture
-notes
+# Typed tagless-final interpretations: Lecture notes
 
  
 
@@ -12,25 +11,7 @@ March 2010. This page collects the notes for the
 course in the form of the extensively commented
 Haskell and OCaml code.
 
--   [Introduction](#introduction)
-
--   [Initial and final, deep and shallow: the first-order case](#infin1)
--   [Final embeddings in OCaml](#fin-OCaml)
--   [Non-compositionality: Fold-*unlike*
-    processing](#non'compositionality)
-
-
--   [Type-preserving embedding of higher-order, typed DSLs](#HO)
--   [De-serialization and type-checking](#type-checking)
-      
--   [Ordinary and one-pass CPS transformation](#CPS)
--   [Type-directed partial evaluation](#TDPE)
--   [Linear and affine lambda-calculi](#linear)
--   [Further applications](#misc)
-
-* * * * *
-
- 
+--------------------------
 
 ## Introduction
 
@@ -81,33 +62,21 @@ and seemingly non-compositional operations.
 
  
 
-## Initial and final, deep and shallow: the
-first-order case
+## Initial and final, deep and shallow: the first-order case
 
-[Intro1.hs](Intro1.hs) [2K]\
-Algebraic data type/initial representation of
-expressions\
-Constructor functions: the intimation of the final
-representation (or, shallow embedding)
-[Intro2.hs](Intro2.hs) [3K]\
-Symantics: parameterization of terms by
-interpreters
+[Intro1.hs](Intro1.hs) [2K]  Algebraic data type/initial representation of expressions;  Constructor functions: the intimation of the final representation (or, shallow embedding)
 
-[Intro3.hs](Intro3.hs) [2K]\
-Initial and Final, Deep and Shallow, First-class
+[Intro2.hs](Intro2.hs) [3K] Symantics: parameterization of terms by interpreters
 
-[ExtI.hs](ExtI.hs) [<1K]\
-Algebraic data types are indeed not extensible
+[Intro3.hs](Intro3.hs) [2K] Initial and Final, Deep and Shallow, First-class
 
-[ExtF.hs](ExtF.hs) [2K]\
-Adding a new expression form to the final view:
-solving the expression problem
+[ExtI.hs](ExtI.hs) [<1K] Algebraic data types are indeed not extensible
 
-[Serialize.hs](Serialize.hs) [4K]\
-Serialization and de-serialization
+[ExtF.hs](ExtF.hs) [2K] Adding a new expression form to the final view: solving the expression problem
 
-[SerializeExt.hs](SerializeExt.hs) [4K]\
-De-serializing the extended language
+[Serialize.hs](Serialize.hs) [4K] Serialization and de-serialization
+
+[SerializeExt.hs](SerializeExt.hs) [4K] De-serializing the extended language
 
  
 
@@ -116,18 +85,13 @@ De-serializing the extended language
 We demonstrate several encodings of extensible
 first-order languages in OCaml. Objects turn out
 handy in emulating the composition of type class
-dictionaries. [final\_obj.ml](final_obj.ml) [2K]\
-The traditional application of objects to
-represent extensible data types. Alas, the set of
-operations on these data types is not extensible.
+dictionaries. 
 
-[final\_mod.ml](final_mod.ml) [3K]\
-Tagless-final embedding using modules
+[final_obj.ml](final_obj.ml) [2K] The traditional application of objects to represent extensible data types. Alas, the set of operations on these data types is not extensible.
 
-[final\_dic.ml](final_dic.ml) [3K]\
-Tagless-final embedding with objects emulating
-type-class dictionaries. Both the language and the
-set of its interpretations are extensible.
+[final_mod.ml](final_mod.ml) [3K] Tagless-final embedding using modules
+
+[final_dic.ml](final_dic.ml) [3K] Tagless-final embedding with objects emulating type-class dictionaries. Both the language and the set of its interpretations are extensible.
 
  
 
@@ -151,30 +115,21 @@ feed into any of the existing or future
 interpreters. Our sample term transformations look
 like simplified versions of the conversion of a
 boolean formula into a conjunctive normal form.
-[PushNegI.hs](PushNegI.hs) [3K]\
-Pushing the negation down: the initial
-implementation
 
-[PushNegF.hs](PushNegF.hs) [3K]\
-Pushing the negation down: the final
-implementation
+[PushNegI.hs](PushNegI.hs) [3K] Pushing the negation down: the initial implementation
 
-[PushNegFExt.hs](PushNegFExt.hs) [4K]\
-Pushing the negation down for extended
-tagless-final terms
+[PushNegF.hs](PushNegF.hs) [3K] Pushing the negation down: the final implementation
 
-[FlatI.hs](FlatI.hs) [2K]\
-[FlatF.hs](FlatF.hs) [3K]\
-Flattening of additions, the initial and the final
-implementations
+[PushNegFExt.hs](PushNegFExt.hs) [4K] Pushing the negation down for extended tagless-final terms
 
-[PushNegFI.hs](PushNegFI.hs) [3K]\
-The final-initial isomorphism, and its use for
-implementing arbitrary pattern-matching operations
-on tagless-final terms.\
-[<
-http://www.comlab.ox.ac.uk/ralf.hinze/SSGIP10/Slides.pdf
-\>](http://www.comlab.ox.ac.uk/ralf.hinze/SSGIP10/Slides.pdf)
+[FlatI.hs](FlatI.hs) [2K]
+
+[FlatF.hs](FlatF.hs) [3K] Flattening of additions, the initial and the final implementations
+
+[PushNegFI.hs](PushNegFI.hs) [3K] The final-initial isomorphism, and its use for
+implementing arbitrary pattern-matching operations on tagless-final terms.
+
+[http://www.comlab.ox.ac.uk/ralf.hinze/SSGIP10/Slides.pdf](http://www.comlab.ox.ac.uk/ralf.hinze/SSGIP10/Slides.pdf)
 
 Ralf Hinze, in Part 7 of his Spring School course,
 has derived this 'initial-final' isomorphism
@@ -200,8 +155,7 @@ the course.
 
  
 
-## Type-preserving embedding of higher-order,
-typed DSLs
+## Type-preserving embedding of higher-order, typed DSLs
 
 Using simply-typed lambda-calculus with constants
 as a sample DSL, we demonstrate its various
@@ -219,9 +173,9 @@ a Haskell compiler, the evaluators can be
 efficiently compiled. Tagless-final embeddings are
 also extensible, letting us add to the syntax of
 the DSL, preserving and reusing old interpreters.
-[IntroHOT.hs](IntroHOT.hs) [3K]\
-The illustration of problems of embedding a typed
-DSL into a typed metalanguage\
+
+[IntroHOT.hs](IntroHOT.hs) [3K] The illustration of problems of embedding a typedDSL into a typed metalanguage
+
 Either the Universal type (and hence spurious
 partiality, type tags and inefficiency), or fancy
 type systems seem inevitable. The problem stems
@@ -229,23 +183,19 @@ from algebraic data types' being too broad: they
 express not only well-typed DSL terms but also
 ill-typed ones.
 
-[Term.agda](Term.agda) [2K]\
-[<
-http://www.iis.sinica.edu.tw/\~scm/2008/typed-lambda-calculus-interprete/
-\>](http://www.iis.sinica.edu.tw/~scm/2008/typed-lambda-calculus-interprete/)
+[Term.agda](Term.agda) [2K]
+[http://www.iis.sinica.edu.tw/\~scm/2008/typed-lambda-calculus-interprete/](http://www.iis.sinica.edu.tw/~scm/2008/typed-lambda-calculus-interprete/)
 
-Shin-Cheng Mu: Typed Lambda-Calculus Interpreter
-in Agda. September 24, 2008\
+Shin-Cheng Mu: Typed Lambda-Calculus Interpreter in Agda. September 24, 2008
+
 Shin-Cheng Mu solves the problem of the
 type-preserving tagless interpretation of
 simply-typed lambda-calculus, relying on dependent
 types and type functions in full glory.
 
-[IntroHOIF.hs](IntroHOIF.hs) [6K]\
-Tagless-initial and Tagless-final evaluators
+[IntroHOIF.hs](IntroHOIF.hs) [6K] Tagless-initial and Tagless-final evaluators
 
-[TTFdB.hs](TTFdB.hs) [7K]\
-Typed, tagless, final, with de Bruijn indices:
+[TTFdB.hs](TTFdB.hs) [7K] Typed, tagless, final, with de Bruijn indices:
 Expressing the type system of simply-typed
 lambda-calculus in Haskell98. No dependent types
 are necessary after all. The types of methods in
@@ -253,15 +203,12 @@ the Symantics type class read like the axioms and
 inference rules of the implication fragment of
 minimal logic.
 
-[TTF.hs](TTF.hs) [7K]\
-Typed, tagless, final, in the higher order
+[TTF.hs](TTF.hs) [7K] Typed, tagless, final, in the higher order
 abstract syntax (HOAS). We illustrate extending
 the DSL with more constants, types, and expression
 forms.
 
-[TTIF.hs](TTIF.hs) [8K]\
-Initial-final isomorphism, in the higher-order
-case
+[TTIF.hs](TTIF.hs) [8K] Initial-final isomorphism, in the higher-order case
 
  
 
@@ -283,8 +230,8 @@ type equality, we develop type representations and
 type safe cast. We regard the language of types,
 too, as a typed DSL, which we embed in Haskell in
 the tagless-final style.
-[TypeCheck.hs](TypeCheck.hs) [12K]\
-De-serialization: (Dynamic) Type Checking\
+
+[TypeCheck.hs](TypeCheck.hs) [12K]\ De-serialization: (Dynamic) Type Checking\
 In contrast to an earlier version of the type
 checker, we use de Bruijn indices and obtain a
 much clearer code. The code is quite similar to
@@ -299,18 +246,15 @@ verification by the Haskell type-checker; for
 example, that closed source terms are
 de-serialized into closed target terms.
 
-[Typ.hs](Typ.hs) [8K]\
-Type representation, equality and the type-safe
-generalized cast\
+[Typ.hs](Typ.hs) [8K] Type representation, equality and the type-safe generalized cast
+
 We present an above-the-board version of
 `Data.Typeable`, in the tagless-final style. Our
 implementation uses no GHC internal operations, no
 questionable extensions, or even a hint of unsafe
 operations.
 
-[<
-http://www.comlab.ox.ac.uk/projects/gip/school/tc.hs
-\>](http://www.comlab.ox.ac.uk/projects/gip/school/tc.hs)
+[http://www.comlab.ox.ac.uk/projects/gip/school/tc.hs](http://www.comlab.ox.ac.uk/projects/gip/school/tc.hs)
 
 Stephanie Weirich some time ago wrote a very
 similar type-checker, but in the initial style,
@@ -384,8 +328,7 @@ redices. The one-pass CPS transform can be
 regarded as an example of the
 normalization-by-evaluation.
 
-[CPS.hs](CPS.hs) [12K]\
-Ordinary and one-pass CPS transforms and their
+[CPS.hs](CPS.hs) [12K] Ordinary and one-pass CPS transforms and their
 compositions
 
 Olivier Danvy and Andrzej Filinski. Representing
@@ -407,16 +350,16 @@ reification is now syntactically apparent and is
 verified by the Haskell type-checker. In the
 tagless-final presentation, reification and
 reflection seem particularly symmetric, elegant
-and insightful. [TDPE.hs](TDPE.hs) [6K]\
-Tagless-final presentation of type-directed
-partial evaluation\
-[ToTDPE.hs](ToTDPE.hs) [<1K]\
-The imported module with sample functions to
+and insightful. 
+
+[TDPE.hs](TDPE.hs) [6K] Tagless-final presentation of type-directed
+partial evaluation
+
+[ToTDPE.hs](ToTDPE.hs) [<1K] The imported module with sample functions to
 reify. Compiling this module makes for a nicer
 example.
 
-[< http://www.brics.dk/\~danvy/tdpe-ln.pdf
-\>](http://www.brics.dk/~danvy/tdpe-ln.pdf)
+[http://www.brics.dk/\~danvy/tdpe-ln.pdf](http://www.brics.dk/~danvy/tdpe-ln.pdf)
 
 Olivier Danvy: Lecture notes on type-directed
 partial evaluation. The lecture notes are based on
@@ -457,8 +400,7 @@ consumed. Since evaluating an expression may
 'consume' a resource associated with one of
 expression's variables, the variable environment
 becomes the variable *state*. We can then follow
-the approach described in [Variable (type)state
-'monad'](../../Computation/monads.html#param-monad).
+the approach described in [Variable (type)state'monad'](../../Computation/monads.html#param-monad).
 
 We represent linear lambda terms by Haskell values
 of the type `repr hi ho a`, where `hi` stands for
@@ -471,7 +413,7 @@ statically: As usual, the type checker does
 abstract interpretation. In our tagless-final
 encoding, `lam` has the following type
 
-         lam :: repr (F a,hi) (U,ho) b  -> repr hi ho (a->b)
+    lam :: repr (F a,hi) (U,ho) b  -> repr hi ho (a->b)
 
 The expression `(lam e)` has the type
 `repr hi ho (a->b)` provided the body of
@@ -513,9 +455,7 @@ bound variables.
     Formatted IO](../../typed-formatting/).
 -   Sandro Magi: Mobile Code in C\# via Finally
     Tagless Interpreters. June 23, 2009.\
-     [<
-    http://higherlogics.blogspot.com/2009/06/mobile-code-in-c-via-finally-tagless.html
-    \>](http://higherlogics.blogspot.com/2009/06/mobile-code-in-c-via-finally-tagless.html)
+     [http://higherlogics.blogspot.com/2009/06/mobile-code-in-c-via-finally-tagless.html](http://higherlogics.blogspot.com/2009/06/mobile-code-in-c-via-finally-tagless.html)
 
     Sandro Magi shows that different
     interpretations of the same DSL term may not
@@ -525,10 +465,7 @@ bound variables.
 -   Non-standard and abstract interpretations
 -   Unusual calculi: shift/reset with effect
     typing; lambda-mu-mubar
--   Abstract Categorial Grammars\
-     [<
-    http://www.loria.fr/equipes/calligramme/acg
-    \>](http://www.loria.fr/equipes/calligramme/acg)
+-   Abstract Categorial Grammars  [http://www.loria.fr/equipes/calligramme/acg](http://www.loria.fr/equipes/calligramme/acg)
 
 * * * * *
 
@@ -540,4 +477,4 @@ oleg-at-pobox.com or oleg-at-okmij.org\
 Your comments, problem reports, questions are very
 welcome!
 
-Converted from HSXML by HSXML-\>HTML
+Converted from HSXML by HSXML->HTML
