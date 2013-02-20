@@ -34,6 +34,7 @@ til1_view = map I.view til1
 
 tfl1 = [lit 1, add (lit 1) (lit 3), F.tf1]
 
+stringId = F.view 
 tfl1_eval = map F.eval tfl1
 -- [1,4,5]
 
@@ -49,7 +50,7 @@ tfl1_view = map F.view tfl1
 -- Further questions about the final representation, in particular with
 -- respect to pattern-match and expressing operations that are not fold
 -- * How to pattern-match on terms?
--- *  How to process expressions unfold-like
+-- * How to process expressions unfold-like
 -- * How to compare terms for equality?
 -- * What if our language is higher-order?
 -- * What if the language is typed?

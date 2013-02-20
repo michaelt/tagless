@@ -1,6 +1,6 @@
 {-# LANGUAGE NoMonomorphismRestriction #-}
 {-# LANGUAGE TypeSynonymInstances #-}
-
+{-#LANGUAGE FlexibleInstances #-}
 -- * Tagless Typed Interpreters: extensibility
 
 module ExtF where

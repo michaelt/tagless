@@ -21,7 +21,7 @@ module SerializeExt where
 import Intro2 hiding (main)
 import ExtF hiding (main)	     -- import the extended `variant': Mul
 
-import Serialize (Tree(..))	     -- import the wire format
+import Serialize (Tree(..),toTree)	     -- import the wire format
 				     -- import the original serializer
 import qualified Serialize as S	hiding (main)
 import qualified Data.DList as D

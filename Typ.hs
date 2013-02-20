@@ -31,7 +31,7 @@ instance TSYM ShowT where
 
 view_t :: ShowT a -> String
 view_t (ShowT s) = s
-
+(~~>) = tarr
 -- * //
 -- * Quantifying over the TSYM interpreter
 -- This closes the type universe
